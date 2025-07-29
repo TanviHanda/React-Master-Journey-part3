@@ -18,8 +18,14 @@ const onSubmit: SubmitHandler = (data) => {
             <label htmlFor="name">Name: </label>
             <input type="text" id="name" {...register('name',{required: 'name is required'})}/>
 
-            {errors.name && <p className="text-red-500">{errors.name.message}</p>}
-            <button type="submit">Submit</button>
+            {errors.name && <p className="text-red">{errors.name.message}</p>}
+            
+        </div>
+        <div>
+            <label htmlFor="email">Email</label>
+            <input type="email" {...register('email',required:'email is required', pattern:{
+                value:/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+            })} />
         </div>
     </form>
   )
